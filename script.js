@@ -1,40 +1,3 @@
-/*
-pseudo code
-
-no.3
-generate random number from 0-2
-if 0 rock, if 1 paper, if 2 scissors
-var computerAnswer = whatever happened
-
-no.4
-let userWin  if user wins, set true, if user loses, set false
-take user input
-make userInput all lower case
-if computerAnswer == userInput
-  tie! return to beginning of function
-else if computerAnswer == rock 
-  if userInput = paper, user wins
-  if userInput = scissors, user loses
-else if computerAnswer = paper
-  if userInput = rock, user loses
-  if userInput = scissors, user wins
-else // or when computerAnswer = scissors
-  if userInput = rock, user wins
-  if userInput = paper, user loses
-
-//make sure to return results
-
-no.6
-make variables to represent the computer and user points; start at 0
-for loop, go 5 times
-if user win = true, add 1 to the user's score
-else add 1 to computer's score
-if computerPoints > userPoints
-  computer wins
-else
-  user wins
-*/
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -71,7 +34,7 @@ function getRoundWinner(computerResponse, userResponse) {
   userResponse = getUserResponse();
   if (computerResponse == userResponse) {
     alert("Tie! Try again.");
-    getRoundWinner(); //ties are rlly weird cause the comptuer wont generate a new resposne even though the user can?? idk i should be balbe to call the computer resposne function multiple times so idkk
+    getRoundWinner(); 
   } else if (computerResponse == "rock") {
     if (userResponse == "paper") {
       userWin = true; 
@@ -122,7 +85,7 @@ function game() {
   }
 
   let playAgain = prompt("Play again? Enter 'Yes' or 'No'");
-  playAgain = playAgain.toLowerCase(); // idk if this needs paranetheses
+  playAgain = playAgain.toLowerCase();
   if (playAgain == "yes") {
     game();
   }
