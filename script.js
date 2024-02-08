@@ -16,7 +16,7 @@ function getComputerResponse() {
   return(computerResponse);
 }
 
-function getUserResponse() {
+/*function getUserResponse() {
   userResponse = prompt("Rock, paper, or scissors?");
   userResponse = userResponse.toLowerCase();
   if (userResponse == "rock" || userResponse == "paper" || userResponse == "scissors") {
@@ -25,13 +25,13 @@ function getUserResponse() {
     getUserResponse();
   }
   return(userResponse);
-}
+}*/
 
 let userWin;
 
-function getRoundWinner(computerResponse, userResponse) {
+function getRoundWinner(userResponse, computerResponse, ) {
   computerResponse = getComputerResponse();
-  userResponse = getUserResponse();
+  userResponse = userResponse.toLowerCase();
   if (computerResponse == userResponse) {
     alert("Tie! Try again.");
     getRoundWinner(); 
@@ -64,7 +64,7 @@ function getRoundWinner(computerResponse, userResponse) {
   return userWin;
 }
 
-function game() {
+/*function game() {
   let userPoints = 0;
   let computerPoints = 0;
 
@@ -89,4 +89,30 @@ function game() {
   if (playAgain == "yes") {
     game();
   }
-}
+}*/
+
+let body = document.querySelector("content");
+
+let rock = document.createElement("button");
+let paper = document.createElement("button");
+let scissors = document.createElement("button");
+
+rock.textContent = "rock!!!";
+paper.textContent = "paper :33333";
+scissors.textContent = "SCISSORS."
+
+body.appendChild(rock);
+body.appendChild(paper);
+body.appendChild(scissors);
+
+rock.addEventListener("click", function(){
+  getRoundWinner("rock");
+}); //idk if we need the parentheses ;sehre pooopoooo
+
+paper.addEventListener("click", function(){
+  getRoundWinner("paper");
+})
+
+scissors.addEventListener("click", function(){
+  getRoundWinner("scissors");
+})
