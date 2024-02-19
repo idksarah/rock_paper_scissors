@@ -18,12 +18,12 @@ function getComputerResponse() {
 
 let userWin;
 
-function getRoundWinner(userResponse, computerResponse/* not needed?*/) {
+function getRoundWinner(userResponse) {
   computerResponse = getComputerResponse();
-  userResponse = userResponse.toLowerCase(); //unnecessary
-  if (computerResponse == userResponse) { //strictly equal?
+  if (computerResponse == userResponse) {
     alert("Tie! Try again.");
-    return; //does this end the function??
+    userWin = null;
+    return userWin;
   } else if (computerResponse == "rock") {
     if (userResponse == "paper") {
       userWin = true; 
@@ -51,33 +51,6 @@ function getRoundWinner(userResponse, computerResponse/* not needed?*/) {
   }
   return userWin;
 }
-
-/*function game() {
-  let userPoints = 0;
-  let computerPoints = 0;
-
-  for (let i = 0; i < 5; i++){
-    getRoundWinner();
-    if (userWin) {
-      userPoints ++;
-    } else {
-      computerPoints ++;
-    }
-    console.log("User:" + userPoints + " Computer:" + computerPoints);
-  }
-
-  if (userPoints > computerPoints) {
-    console.log("Congrats! You Won");
-  } else {
-    console.log("Aw! You Lost");
-  }
-
-  let playAgain = prompt("Play again? Enter 'Yes' or 'No'");
-  playAgain = playAgain.toLowerCase();
-  if (playAgain == "yes") {
-    game();
-  }
-}*/
 
 let body = document.querySelector("body");
 let buttons = document.querySelector(".buttons");
@@ -109,25 +82,42 @@ function updatePoints () {
 results.appendChild(userResults);
 results.appendChild(computerResults);
 
+let getWin;
+
 buttons.addEventListener("click", function() {
   if(rock.click) {
-    if(getRoundWinner("rock")) {
+    if(getWin = getRoundWinner("rock")) {
       userPoints++;
+    }else if (getWin == null) {
+      return;
     }else {
       computerPoints++;
     }
   }else if(paper.click) {
     if(getRoundWinner("paper")) {
       userPoints++;
+    }else if (getWin == null) {
+      return;
     }else {
       computerPoints++;
     }
   }else {
     if(getRoundWinner("scissors")) {
       userPoints++;
+    }else if (getWin == null) {
+      return;
     }else {
       computerPoints++;
     }
   }
   updatePoints();
+
+  if(userPoints == 5 || computerPoints == 5) {
+    if (userPoints > computerPoints) {
+      alert("Congrats! You Won");
+    } else {
+      alert("You Lost");
+    }
+  }
 });
+  
